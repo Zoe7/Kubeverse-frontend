@@ -1,8 +1,13 @@
 import React from 'react'
-import './App.css'
+import Header from './components/Header'
+import MaterialSetup from './utils/MaterialSetup'
 
 const App = () => {
-  return <div className="App">Hello</div>
+  return (
+    <MaterialSetup>
+      <Header />
+    </MaterialSetup>
+  )
 }
 
 export default App
