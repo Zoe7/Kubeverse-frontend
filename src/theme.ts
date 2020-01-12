@@ -26,6 +26,36 @@ export const customTheme = {
       base800: 'hsl(186, 91%, 29%)',
       base900: 'hsl(188, 91%, 23%)',
     },
+    neutral: {
+      base0: 'hsl(216, 33%, 97%)',
+      base100: 'hsl(214, 15%, 91%)',
+      base200: 'hsl(210, 16%, 82%)',
+      base300: 'hsl(211, 13%, 65%)',
+      base400: 'hsl(211, 10%, 53%)',
+      base500: 'hsl(211, 12%, 43%)',
+      base600: 'hsl(209, 14%, 37%)',
+      base700: 'hsl(209, 18%, 30%)',
+      base800: 'hsl(209, 20%, 25%)',
+      base900: 'hsl(210, 24%, 16%)',
+    },
+  },
+  boxShadow: {
+    base0: '0 1px 3px hsla(0, 0%, 0%, .12), 0 1px 2px hsla(0, 0%, 0%, .24)',
+    base200: '0 3px 6px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .12)',
+    base400: '0 10px 20px hsla(0, 0%, 0%, .15), 0 3px 6px hsla(0, 0%, 0%, .10)',
+    base600:
+      '0 15px 25px hsla(0, 0%, 0%, .15), 0 5px 10px hsla(0, 0%, 0%, .05)',
+    base800: '0 20px 40px hsla(0, 0%, 0%, .2)',
+  },
+  fontSize: {
+    XS: '12px',
+    S: '14px',
+    M: '16px',
+    L: '18px',
+    XL: '20px',
+    XXL: '24px',
+    XXXL: '32px',
+    XXXXL: '48px',
   },
 }
 
