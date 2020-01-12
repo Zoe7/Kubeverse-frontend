@@ -12,4 +12,5 @@ export type UserContext = {
   user: User | null
   login: ({ email, password }: UserCredentials) => any
   logout: () => any
+  isAuthenticated: boolean
 }
