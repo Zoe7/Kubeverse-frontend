@@ -1,6 +1,4 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import React, { useContext } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +10,8 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import Login from './pages/Login'
 import Header from './components/Header'
 import MaterialSetup from './utils/MaterialSetup'
-import { UserContextProvider } from './utils/UserContext'
+import { UserContextProvider, UserContext } from './utils/UserContext'
+import Home from './pages/Home'
 
 const App = () => {
   const client = new ApolloClient({
@@ -26,22 +25,38 @@ const App = () => {
     },
     uri: `${process.env.REACT_APP_GRAPHQL_ENDPOINT}`,
   })
+
+  const PrivateRoutes = ({ children }: { children: JSX.Element }) => {
+    const userContext = useContext(UserContext)
+    const history = useHistory()
+
+    if (!userContext.isAuthenticated) {
+      history.push('/login')
+    }
+
+    return children
+  }
+
   return (
-    <MaterialSetup>
-      <UserContextProvider>
-        <Header />
+    <ApolloProvider client={client}>
+      <MaterialSetup>
         <Router>
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+          <UserContextProvider>
+            <Header />
+            <Switch>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <PrivateRoutes>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </PrivateRoutes>
+            </Switch>
+          </UserContextProvider>
         </Router>
-      </UserContextProvider>
-    </MaterialSetup>
+      </MaterialSetup>
+    </ApolloProvider>
   )
 }
 
